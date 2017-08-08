@@ -771,3 +771,12 @@ function mdi_facebook_feed () {
 add_shortcode('mdi_facebook_feed', 'mdi_facebook_feed');
 
 date_default_timezone_set('America/Los_Angeles');
+
+if(!$_SESSION['development']) {
+	require 'vendor/plugin-update-checker/plugin-update-checker.php';
+	Puc_v4_Factory::buildUpdateChecker(
+		'https://pacificsky.co/themes/' . get_option('stylesheet') . '.json',
+		__FILE__,
+		get_option('stylesheet')
+	);
+}
